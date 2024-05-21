@@ -4,7 +4,7 @@
 
 ### Phân tích 
 
-* Service 1: Email_Manager
+* Service 1: Email_Manager: 
 
 1. Tạo endpoint API post để nhận yêu cầu gửi email với thông tin như: email người gửi, email người nhận, tiêu đề email, nội dung email.
 
@@ -14,7 +14,7 @@
 
 4. Mỗi yêu cầu sẽ được đẩy vào hàng đợi (queue)
 
-* Service 2: Email_Sender
+* Service 2: Email_Sender:
 
 1. Kết nối tới RabbitMQ và lắng nghe hàng đợi để nhận các nội dung về các email.
 
@@ -25,23 +25,65 @@
 ### Công ghệ sử dụng 
 
 - Ngôn ngữ Python
-- Tạo API bằng FastAPI
-- Lưu trữ dữ liệu email bằng PostgreSQL
-- Phần mềm trung gian RabbitMQ
-- Sử dụng Resend để gửi đến email thật
+- Tạo API bằng FastAPI.
+- Lưu trữ dữ liệu email bằng PostgreSQL.
+- Dùng Docker làm server.
+- Phần mềm trung gian RabbitMQ.
+- Sử dụng Resend để gửi đến email thật.
 
-### Sơ đồ hệ thống 
+### Sơ đồ luồng hoạt động.
+![markdown](https://github.com/truong270801/translate_Intern/blob/main/rabbitmq_sendmail.png)
 
-### Sơ đồ luồng hoat động.
-<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=5,IE=9" ><![endif]-->
-<!DOCTYPE html>
-<html>
-<head>
-<title>rabbitmq_sendmail.html</title>
-<meta charset="utf-8"/>
-</head>
-<body>
-<div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2024-05-21T07:04:38.363Z\&quot; agent=\&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36\&quot; etag=\&quot;t3_9rwiiY1VmfBB8IpDL\&quot; version=\&quot;24.4.4\&quot; type=\&quot;device\&quot;&gt;&lt;diagram name=\&quot;Trang-1\&quot; id=\&quot;M5fm9jCxS0D3oeh2qvHK\&quot;&gt;&lt;mxGraphModel dx=\&quot;1674\&quot; dy=\&quot;790\&quot; grid=\&quot;1\&quot; gridSize=\&quot;10\&quot; guides=\&quot;1\&quot; tooltips=\&quot;1\&quot; connect=\&quot;1\&quot; arrows=\&quot;1\&quot; fold=\&quot;1\&quot; page=\&quot;1\&quot; pageScale=\&quot;1\&quot; pageWidth=\&quot;827\&quot; pageHeight=\&quot;1169\&quot; math=\&quot;0\&quot; shadow=\&quot;0\&quot;&gt;&lt;root&gt;&lt;mxCell id=\&quot;0\&quot;/&gt;&lt;mxCell id=\&quot;1\&quot; parent=\&quot;0\&quot;/&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-1\&quot; value=\&quot;Nhập và yêu cầu gửi&amp;lt;div&amp;gt;sử dụng endpoint create&amp;lt;/div&amp;gt;\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;&lt;mxGeometry x=\&quot;40\&quot; y=\&quot;180\&quot; width=\&quot;240\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-2\&quot; value=\&quot;PostgreSQL\&quot; style=\&quot;shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;&lt;mxGeometry x=\&quot;330\&quot; y=\&quot;350\&quot; width=\&quot;100\&quot; height=\&quot;110\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-3\&quot; value=\&quot;Người dùng\&quot; style=\&quot;ellipse;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;&lt;mxGeometry x=\&quot;100\&quot; y=\&quot;70\&quot; width=\&quot;120\&quot; height=\&quot;80\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-4\&quot; value=\&quot;Lưu trữ email\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;&lt;mxGeometry x=\&quot;40\&quot; y=\&quot;375\&quot; width=\&quot;240\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-5\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;X0H7CE8ZF1-jJdVYNcWR-4\&quot; edge=\&quot;1\&quot;&gt;&lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;&lt;mxPoint x=\&quot;310\&quot; y=\&quot;435\&quot; as=\&quot;sourcePoint\&quot;/&gt;&lt;mxPoint x=\&quot;330\&quot; y=\&quot;405\&quot; as=\&quot;targetPoint\&quot;/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-6\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;X0H7CE8ZF1-jJdVYNcWR-3\&quot; target=\&quot;X0H7CE8ZF1-jJdVYNcWR-1\&quot; edge=\&quot;1\&quot;&gt;&lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;&lt;mxPoint x=\&quot;150\&quot; y=\&quot;110\&quot; as=\&quot;sourcePoint\&quot;/&gt;&lt;mxPoint x=\&quot;200\&quot; y=\&quot;60\&quot; as=\&quot;targetPoint\&quot;/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-9\&quot; value=\&quot;Đưa email vào hàng đợi RabbitMQ\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;&lt;mxGeometry x=\&quot;40\&quot; y=\&quot;495\&quot; width=\&quot;240\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-10\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;X0H7CE8ZF1-jJdVYNcWR-4\&quot; target=\&quot;X0H7CE8ZF1-jJdVYNcWR-9\&quot; edge=\&quot;1\&quot;&gt;&lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;&lt;mxPoint x=\&quot;380\&quot; y=\&quot;525\&quot; as=\&quot;sourcePoint\&quot;/&gt;&lt;mxPoint x=\&quot;430\&quot; y=\&quot;475\&quot; as=\&quot;targetPoint\&quot;/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-11\&quot; value=\&quot;Service 1: Email_Manager\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;&lt;mxGeometry x=\&quot;40\&quot; y=\&quot;270\&quot; width=\&quot;240\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-12\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;X0H7CE8ZF1-jJdVYNcWR-1\&quot; target=\&quot;X0H7CE8ZF1-jJdVYNcWR-11\&quot; edge=\&quot;1\&quot;&gt;&lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;&lt;mxPoint x=\&quot;380\&quot; y=\&quot;430\&quot; as=\&quot;sourcePoint\&quot;/&gt;&lt;mxPoint x=\&quot;430\&quot; y=\&quot;380\&quot; as=\&quot;targetPoint\&quot;/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-13\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;X0H7CE8ZF1-jJdVYNcWR-11\&quot; target=\&quot;X0H7CE8ZF1-jJdVYNcWR-4\&quot; edge=\&quot;1\&quot;&gt;&lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;&lt;mxPoint x=\&quot;380\&quot; y=\&quot;430\&quot; as=\&quot;sourcePoint\&quot;/&gt;&lt;mxPoint x=\&quot;430\&quot; y=\&quot;380\&quot; as=\&quot;targetPoint\&quot;/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-19\&quot; value=\&quot;\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\&quot; parent=\&quot;1\&quot; source=\&quot;X0H7CE8ZF1-jJdVYNcWR-14\&quot; target=\&quot;X0H7CE8ZF1-jJdVYNcWR-15\&quot; edge=\&quot;1\&quot;&gt;&lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-14\&quot; value=\&quot;Service 2: Email_Sender\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;&lt;mxGeometry x=\&quot;520\&quot; y=\&quot;270\&quot; width=\&quot;240\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-20\&quot; value=\&quot;\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\&quot; parent=\&quot;1\&quot; source=\&quot;X0H7CE8ZF1-jJdVYNcWR-15\&quot; target=\&quot;X0H7CE8ZF1-jJdVYNcWR-16\&quot; edge=\&quot;1\&quot;&gt;&lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-15\&quot; value=\&quot;Hứng email từ hàng đợi RabbitMQ\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;&lt;mxGeometry x=\&quot;520\&quot; y=\&quot;375\&quot; width=\&quot;240\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-16\&quot; value=\&quot;Xử lý và dưa tới Resend\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;&lt;mxGeometry x=\&quot;520\&quot; y=\&quot;480\&quot; width=\&quot;240\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-23\&quot; value=\&quot;\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\&quot; parent=\&quot;1\&quot; source=\&quot;X0H7CE8ZF1-jJdVYNcWR-17\&quot; target=\&quot;X0H7CE8ZF1-jJdVYNcWR-22\&quot; edge=\&quot;1\&quot;&gt;&lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-27\&quot; value=\&quot;\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\&quot; parent=\&quot;1\&quot; source=\&quot;X0H7CE8ZF1-jJdVYNcWR-17\&quot; target=\&quot;X0H7CE8ZF1-jJdVYNcWR-25\&quot; edge=\&quot;1\&quot;&gt;&lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-17\&quot; value=\&quot;\&quot; style=\&quot;rhombus;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;&lt;mxGeometry x=\&quot;572.5\&quot; y=\&quot;584.5\&quot; width=\&quot;135\&quot; height=\&quot;65.5\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-18\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;X0H7CE8ZF1-jJdVYNcWR-16\&quot; target=\&quot;X0H7CE8ZF1-jJdVYNcWR-17\&quot; edge=\&quot;1\&quot;&gt;&lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;&lt;mxPoint x=\&quot;640\&quot; y=\&quot;580\&quot; as=\&quot;sourcePoint\&quot;/&gt;&lt;mxPoint x=\&quot;430\&quot; y=\&quot;380\&quot; as=\&quot;targetPoint\&quot;/&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-31\&quot; value=\&quot;\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\&quot; parent=\&quot;1\&quot; source=\&quot;X0H7CE8ZF1-jJdVYNcWR-22\&quot; target=\&quot;X0H7CE8ZF1-jJdVYNcWR-30\&quot; edge=\&quot;1\&quot;&gt;&lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-22\&quot; value=\&quot;Cập nhật status : &amp;quot;Thành công&amp;quot;&amp;lt;br&amp;gt;Bằng cách sử dụng endpoint update\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;&lt;mxGeometry x=\&quot;520\&quot; y=\&quot;700\&quot; width=\&quot;240\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-24\&quot; value=\&quot;Đúng\&quot; style=\&quot;text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;&lt;mxGeometry x=\&quot;640\&quot; y=\&quot;660\&quot; width=\&quot;60\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-25\&quot; value=\&quot;Cập nhật status : &amp;quot;Thất bại&amp;quot;&amp;lt;br&amp;gt;Bằng cách sử dụng endpoint update\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;&lt;mxGeometry x=\&quot;380\&quot; y=\&quot;587.25\&quot; width=\&quot;150\&quot; height=\&quot;92.75\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-28\&quot; value=\&quot;Sai\&quot; style=\&quot;text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;&lt;mxGeometry x=\&quot;530\&quot; y=\&quot;585\&quot; width=\&quot;60\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-29\&quot; value=\&quot;Kết thúc\&quot; style=\&quot;ellipse;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;&lt;mxGeometry x=\&quot;280\&quot; y=\&quot;800\&quot; width=\&quot;120\&quot; height=\&quot;80\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-38\&quot; value=\&quot;\&quot; style=\&quot;edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;\&quot; parent=\&quot;1\&quot; source=\&quot;X0H7CE8ZF1-jJdVYNcWR-30\&quot; target=\&quot;X0H7CE8ZF1-jJdVYNcWR-29\&quot; edge=\&quot;1\&quot;&gt;&lt;mxGeometry relative=\&quot;1\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-30\&quot; value=\&quot;Email được gửi thành công&amp;amp;nbsp;\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;&lt;mxGeometry x=\&quot;520\&quot; y=\&quot;810\&quot; width=\&quot;240\&quot; height=\&quot;60\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-34\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.31;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;\&quot; parent=\&quot;1\&quot; source=\&quot;X0H7CE8ZF1-jJdVYNcWR-22\&quot; target=\&quot;X0H7CE8ZF1-jJdVYNcWR-2\&quot; edge=\&quot;1\&quot;&gt;&lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;&lt;mxPoint x=\&quot;380\&quot; y=\&quot;630\&quot; as=\&quot;sourcePoint\&quot;/&gt;&lt;mxPoint x=\&quot;430\&quot; y=\&quot;580\&quot; as=\&quot;targetPoint\&quot;/&gt;&lt;Array as=\&quot;points\&quot;&gt;&lt;mxPoint x=\&quot;360\&quot; y=\&quot;730\&quot;/&gt;&lt;/Array&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-35\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.63;entryY=1.027;entryDx=0;entryDy=0;entryPerimeter=0;\&quot; parent=\&quot;1\&quot; source=\&quot;X0H7CE8ZF1-jJdVYNcWR-25\&quot; target=\&quot;X0H7CE8ZF1-jJdVYNcWR-2\&quot; edge=\&quot;1\&quot;&gt;&lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;&lt;mxPoint x=\&quot;380\&quot; y=\&quot;630\&quot; as=\&quot;sourcePoint\&quot;/&gt;&lt;mxPoint x=\&quot;430\&quot; y=\&quot;580\&quot; as=\&quot;targetPoint\&quot;/&gt;&lt;Array as=\&quot;points\&quot;&gt;&lt;mxPoint x=\&quot;455\&quot; y=\&quot;520\&quot;/&gt;&lt;mxPoint x=\&quot;393\&quot; y=\&quot;520\&quot;/&gt;&lt;/Array&gt;&lt;/mxGeometry&gt;&lt;/mxCell&gt;&lt;mxCell id=\&quot;X0H7CE8ZF1-jJdVYNcWR-80\&quot; value=\&quot;&amp;lt;span style=&amp;quot;font-size: 36px;&amp;quot;&amp;gt;&amp;lt;font face=&amp;quot;Times New Roman&amp;quot;&amp;gt;SƠ ĐỒ LUỒNG&amp;lt;/font&amp;gt;&amp;lt;/span&amp;gt;\&quot; style=\&quot;text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;&lt;mxGeometry x=\&quot;199\&quot; y=\&quot;20\&quot; width=\&quot;430\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot;/&gt;&lt;/mxCell&gt;&lt;/root&gt;&lt;/mxGraphModel&gt;&lt;/diagram&gt;&lt;/mxfile&gt;&quot;,&quot;toolbar&quot;:&quot;pages zoom layers lightbox&quot;,&quot;page&quot;:0}"></div>
-<script type="text/javascript" src="https://app.diagrams.net/js/viewer-static.min.js"></script>
-</body>
-</html>
+## Cài đặt và chạy chương trình
+### Yêu cầu :
+* Cài đặt [Python](https://www.python.org/downloads/)
+* Cài đặt [PostgreSQL](https://www.postgresql.org/download/)
+* Tùy nhu cầu dùng [Postman](https://www.postman.com/downloads/)
+* Cài đặt [Docker](https://www.docker.com/products/docker-desktop/)
+
+### Cài đặt :
+
+* `git clone https://github.com/truong270801/rabbitmq_sendmail.git`
+
+#### Cơ sở dữ liệu:
+* Tạo cơ sở dữ liệu mới tên là `Users`
+* Sửa đổi tên, mật khẩu, tên database, tên host trong file .env
+```
+DB_USER="postgres"
+DB_PASS="123456"
+DB_HOST="localhost:5432"
+DB_NAME="Users"
+```
+#### Mở lệnh Terminal VSCode:
+```
+cd rabbitmq_sendmail
+pip install pika
+pip install uvicorn
+pip install fastapi
+pip install python-dotenv
+pip install sqlalchemy
+pip install psycopg2
+pip install tkinter
+pip install resend
+
+```
+### Chạy chương trình
+```
+//chạy Docker: docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.13-management
+
+- Service 1 :
+    + Chạy FastAPI 
+        cd Email_Manager
+        cd app
+        uvicorn main:app --reload
+    + Chạy UI nhập tin nhắn :
+        cd Email_Manager
+        cd app
+        cd UI
+        python email_ui.py
+- Service 2 :
+    cd Email_Sender
+    cd app
+    python email_processor.py
+
+```
