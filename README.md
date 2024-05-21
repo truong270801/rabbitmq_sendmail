@@ -52,9 +52,9 @@
 DB_USER="postgres"
 DB_PASS="123456"
 DB_HOST="localhost:5432"
-DB_NAME="Users"
+DB_NAME="Mail_RabbitMQ"
 ```
-#### Mở lệnh Terminal VSCode:
+#### Cài đặt các môi trường:
 ```
 cd rabbitmq_sendmail
 pip install pika
@@ -65,7 +65,6 @@ pip install sqlalchemy
 pip install psycopg2
 pip install tkinter
 pip install resend
-
 ```
 ### Chạy chương trình
 ```
