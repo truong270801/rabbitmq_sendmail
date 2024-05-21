@@ -2,6 +2,7 @@
 import pika, sys, os
 import json
 from resend_email import send_email
+from email_status import update_status
 
 from dotenv import load_dotenv
 import os
@@ -25,9 +26,11 @@ def main():
             subject = message_dict['email']['subject']
             content = message_dict['email']['content']
            
-           
-            send_email(email_from, email_to, subject, content)
-                   
+            try:
+                    send_email(email_from, email_to, subject, content)
+                    update_status(email_id, "Thành công")
+            except Exception as e:
+                    update_status(email_id, "Thất bại")
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
 
