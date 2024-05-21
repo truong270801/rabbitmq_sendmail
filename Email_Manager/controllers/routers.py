@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from database.db import get_db
 from database.schemas import RequestMail, Response,mailSchema
 from controllers import crud
+from rabbitmq.email_queues import send_message_to_queue
 
 
 router = APIRouter()
@@ -11,6 +12,7 @@ router = APIRouter()
 @router.post('/create')
 async def create_mail(request: RequestMail, db: Session = Depends(get_db)):
     created_mail = crud.create_mail(db, request)
+    send_message_to_queue(request,created_mail.id)
     return Response(email = created_mail).dict(exclude_none = True)
 
 @router.get('/')
