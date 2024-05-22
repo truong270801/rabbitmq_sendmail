@@ -46,7 +46,7 @@
 * `git clone https://github.com/truong270801/rabbitmq_sendmail.git`
 
 #### Cơ sở dữ liệu:
-* Tạo cơ sở dữ liệu mới tên là `Users`
+* Tạo cơ sở dữ liệu mới tên là `Mail_RabbitMQ`
 * Sửa đổi tên, mật khẩu, tên database, tên host trong file .env
 ```
 DB_USER="postgres"
@@ -86,4 +86,11 @@ pip install resend
     python email_processor.py
 
 ```
-* Xem video demo [Tại đây](https://files.fm/u/3jhnhbah2r#/view/2x3mw9tp2p)
+
+### Mở trình duyệt :
+* URL mặc định: `http://127.0.0.1:8000/`
+* URL mở Swagger UI: `http://127.0.0.1:8000/docs/`
+* URL mở giao diện web rabbitmq: `http://localhost:15672/`
+
+# Xem video demo [Tại đây](https://files.fm/u/3jhnhbah2r#/view/2x3mw9tp2p)
+
