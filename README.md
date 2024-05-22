@@ -48,31 +48,22 @@
 #### Cơ sở dữ liệu:
 * Tạo cơ sở dữ liệu mới tên là `Mail_RabbitMQ`
 * Sửa đổi tên, mật khẩu, tên database, tên host trong file .env
+
 ```
 DB_USER="postgres"
 DB_PASS="123456"
 DB_HOST="localhost:5432"
 DB_NAME="Mail_RabbitMQ"
 ```
-#### Cài đặt các môi trường:
+
+### Cài đặt môi trường và chạy chương trình
 ```
-cd rabbitmq_sendmail
-pip install pika
-pip install uvicorn
-pip install fastapi
-pip install python-dotenv
-pip install sqlalchemy
-pip install psycopg2
-pip install tkinter
-pip install resend
-```
-### Chạy chương trình
-```
-chạy Docker: docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.13-management
+docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.13-management
 
 - Service 1 :
     + Chạy FastAPI 
         cd Email_Manager
+        pip install -r requirements.txt
         cd app
         uvicorn main:app --reload
     + Chạy UI nhập tin nhắn :
@@ -82,6 +73,7 @@ chạy Docker: docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 r
         python email_ui.py
 - Service 2 :
     cd Email_Sender
+    pip install -r requirements.txt
     cd app
     python email_processor.py
 
