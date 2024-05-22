@@ -10,4 +10,5 @@
 * Tăng số lượng worker để xử lý tin nhắn 
 * Tăng kích thước hệ thống như CPU RAM và bộ nhớ 
 * Tối ưu hóa các tin nhắn chỉ cần chứa đúng thông tin cần thiết
-* 
+* Chia nhỏ các email thành các phần nhỏ giảm tải cho hàng đợi
+
